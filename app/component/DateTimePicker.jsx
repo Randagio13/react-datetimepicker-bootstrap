@@ -1,4 +1,4 @@
-// import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
+import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
 import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
 import React from 'react';
 import jQuery from 'jquery';
@@ -10,20 +10,64 @@ class DateTimePicker extends React.Component {
     constructor(props) {
         super(props);
     }
+    static propTypes = {
+        id: React.PropTypes.string.isRequired,
+        iconLeft: React.PropTypes.oneOfType([
+            React.PropTypes.bool,
+            React.PropTypes.string
+        ]),
+        iconRight: React.PropTypes.oneOfType([
+            React.PropTypes.bool,
+            React.PropTypes.string
+        ])
+    }
     state = this.props;
     componentDidMount() {
         const {id} = this.state;
         // const datePickerOptions = this.state.options;
         // jQuery(`#${id}`).datetimepicker(datePickerOptions).on('dp.change', this.handleValidation);
         jQuery(`#${id}`).datetimepicker();
+        window.datetimepicker = jQuery(`#${id}`).datetimepicker();
     }
-    shouldComponentUpdate(nextProps, nextState) {
-        return nextState.placeholder !== this.state.placeholder;
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return nextState.placeholder !== this.state.placeholder;
+    // }
+    // handleClick = () => {
+    //     this.setState({
+    //         placeholder: 'Ciao'
+    //     });
+    // }
+    iconLeft = () => {
+        const {iconLeft} = this.props;
+        if (!iconLeft) return null;
+        if (typeof iconLeft === 'string' && iconLeft) {
+            return (
+                <span className="input-group-addon">
+                    <span className={'glyphicon glyphicon-' + iconLeft}></span>
+                </span>
+            );
+        }
+        return (
+            <span className="input-group-addon">
+                <span className="glyphicon glyphicon-calendar"></span>
+            </span>
+        );
     }
-    handleClick = () => {
-        this.setState({
-            placeholder: 'Ciao'
-        });
+    iconRight = () => {
+        const {iconRight} = this.props;
+        if (!iconRight) return null;
+        if (typeof iconRight === 'string' && iconRight) {
+            return (
+                <span className="input-group-addon">
+                    <span className={'glyphicon glyphicon-' + iconRight}></span>
+                </span>
+            );
+        }
+        return (
+            <span className="input-group-addon">
+                <span className="glyphicon glyphicon-calendar"></span>
+            </span>
+        );
     }
     handleBsStyle = () => {
         // let divClassName = (hasFeedback) ? 'form-group has-feedback' : 'form-group';
@@ -56,13 +100,9 @@ class DateTimePicker extends React.Component {
             <div className={divClassName}>
                 {labelText}
                 <div className="input-group" id={id}>
-                    {
-                        // TODO: addonBefore Icon
-                    }
-                    <input ref={id} className="form-control" type="text" name={name} required={required} disabled={disabled} placeholder={placeholder} onClick={this.handleClick} />
-                    {
-                        // TODO: addonAfter Icon
-                    }
+                    {this.iconLeft()}
+                    <input ref={id} className="form-control" type="text" name={name} required={required} disabled={disabled} placeholder={placeholder} />
+                    {this.iconRight()}
                 </div>
                 {
                     // TODO: bsStyle
