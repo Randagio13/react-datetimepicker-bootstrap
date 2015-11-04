@@ -10,15 +10,15 @@ class DateTimePicker extends React.Component {
     constructor(props) {
         super(props);
     }
+    static defaultProps = {
+        iconType: 'calendar'
+    }
     static propTypes = {
         id: React.PropTypes.string.isRequired,
-        iconLeft: React.PropTypes.oneOfType([
-            React.PropTypes.bool,
-            React.PropTypes.string
-        ]),
-        iconRight: React.PropTypes.oneOfType([
-            React.PropTypes.bool,
-            React.PropTypes.string
+        iconType: React.PropTypes.string,
+        icon: React.PropTypes.oneOf([
+            'right',
+            'left'
         ])
     }
     state = this.props;
@@ -37,37 +37,18 @@ class DateTimePicker extends React.Component {
     //         placeholder: 'Ciao'
     //     });
     // }
-    iconLeft = () => {
-        const {iconLeft} = this.props;
-        if (!iconLeft) return null;
-        if (typeof iconLeft === 'string' && iconLeft) {
-            return (
-                <span className="input-group-addon">
-                    <span className={'glyphicon glyphicon-' + iconLeft}></span>
-                </span>
-            );
+    iconSet = (position) => {
+        const {iconType, icon} = this.props;
+        switch (true) {
+            case position === icon:
+                return (
+                    <span className="input-group-addon">
+                        <span className={'glyphicon glyphicon-' + iconType}></span>
+                    </span>
+                );
+            default:
+                return null;
         }
-        return (
-            <span className="input-group-addon">
-                <span className="glyphicon glyphicon-calendar"></span>
-            </span>
-        );
-    }
-    iconRight = () => {
-        const {iconRight} = this.props;
-        if (!iconRight) return null;
-        if (typeof iconRight === 'string' && iconRight) {
-            return (
-                <span className="input-group-addon">
-                    <span className={'glyphicon glyphicon-' + iconRight}></span>
-                </span>
-            );
-        }
-        return (
-            <span className="input-group-addon">
-                <span className="glyphicon glyphicon-calendar"></span>
-            </span>
-        );
     }
     handleBsStyle = () => {
         // let divClassName = (hasFeedback) ? 'form-group has-feedback' : 'form-group';
@@ -100,9 +81,9 @@ class DateTimePicker extends React.Component {
             <div className={divClassName}>
                 {labelText}
                 <div className="input-group" id={id}>
-                    {this.iconLeft()}
+                    {this.iconSet('left')}
                     <input ref={id} className="form-control" type="text" name={name} required={required} disabled={disabled} placeholder={placeholder} />
-                    {this.iconRight()}
+                    {this.iconSet('right')}
                 </div>
                 {
                     // TODO: bsStyle
