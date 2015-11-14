@@ -1,11 +1,9 @@
-import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
-import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
+// import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
+// import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
 import React from 'react';
 import jQuery from 'jquery';
 import Perf from 'react-addons-perf';
-window.Perf = Perf;
-Perf.start();
-
+// Perf.start();
 class DateTimePicker extends React.Component {
     constructor(props) {
         super(props);
@@ -19,7 +17,8 @@ class DateTimePicker extends React.Component {
         icon: React.PropTypes.oneOf([
             'right',
             'left'
-        ])
+        ]),
+        placeholder: React.PropTypes.string
     }
     state = this.props;
     componentDidMount() {
@@ -71,9 +70,6 @@ class DateTimePicker extends React.Component {
         return '';
     }
     render() {
-        Perf.printInclusive(
-            Perf.getLastMeasurements()
-        );
         const {label, help, id, name, placeholder, disabled, required} = this.state;
         const labelText = (label) ? <label className="control-label" htmlFor={id}>{label}</label> : null;
         const divClassName = this.handleBsStyle();
@@ -95,5 +91,6 @@ class DateTimePicker extends React.Component {
         );
     }
 }
-
+// Perf.stop();
+// Perf.printDOM();
 export default DateTimePicker;
