@@ -1,9 +1,9 @@
-// import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
-// import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
+import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
+import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
 import React from 'react';
 import jQuery from 'jquery';
 import Perf from 'react-addons-perf';
-// Perf.start();
+Perf.start();
 class DateTimePicker extends React.Component {
     constructor(props) {
         super(props);
@@ -18,15 +18,21 @@ class DateTimePicker extends React.Component {
             'right',
             'left'
         ]),
-        placeholder: React.PropTypes.string
+        placeholder: React.PropTypes.string,
+        locale: React.PropTypes.string,
+        format: React.PropTypes.string
     }
     state = this.props;
     componentDidMount() {
-        const {id} = this.state;
+        const {id, locale, format} = this.state;
+        const options = {
+            locale,
+            format
+        };
         // const datePickerOptions = this.state.options;
         // jQuery(`#${id}`).datetimepicker(datePickerOptions).on('dp.change', this.handleValidation);
-        jQuery(`#${id}`).datetimepicker();
-        window.datetimepicker = jQuery(`#${id}`).datetimepicker();
+        jQuery(`#${id}`).datetimepicker(options);
+        window.datetimepicker = jQuery(`#${id}`).datetimepicker(options);
     }
     // shouldComponentUpdate(nextProps, nextState) {
     //     return nextState.placeholder !== this.state.placeholder;
@@ -91,6 +97,6 @@ class DateTimePicker extends React.Component {
         );
     }
 }
-// Perf.stop();
-// Perf.printDOM();
+Perf.stop();
+Perf.printDOM();
 export default DateTimePicker;
