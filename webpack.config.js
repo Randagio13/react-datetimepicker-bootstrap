@@ -3,10 +3,10 @@ var path = require('path');
 
 module.exports = {
     devtool: process.env.NODE_ENV !== 'production' ? 'eval' : null,
-    entry: './app/app.jsx',
+    entry: './app/App.jsx',
     output: {
         path: './build',
-        filename: 'app.js',
+        filename: 'App.js',
         publicPath: '/'
     },
     resolve: {
@@ -14,7 +14,7 @@ module.exports = {
             path.resolve('./app/'),
             path.resolve('./node_modules/')
         ],
-        modulesDirectories: ['node_modules'],
+        modulesDirectories: ['node_modules', 'app'],
         extensions: ['', '.jsx', '.js']
     },
     module: {
@@ -26,9 +26,10 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
+                loader: 'babel',
                 query: {
-                    stage: 0
+                    presets: ['react', 'es2015', 'stage-0'],
+                    cacheDirectory: true
                 }
             },
             {test: /\.css$/, loader: 'style!css'},
@@ -41,8 +42,7 @@ module.exports = {
         new webpack.DefinePlugin({
             process: {
                 env: {
-                    NODE_ENV: '"' + process.env.NODE_ENV + '"',
-                    BETA: JSON.stringify(JSON.parse(!!process.env.BETA))
+                    NODE_ENV: '"' + process.env.NODE_ENV + '"'
                 }
             }
         })

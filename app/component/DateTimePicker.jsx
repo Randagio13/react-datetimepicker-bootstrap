@@ -2,16 +2,14 @@ import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min
 import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
 import React from 'react';
 import jQuery from 'jquery';
-import Perf from 'react-addons-perf';
-window.Perf = Perf;
-Perf.start();
-
 class DateTimePicker extends React.Component {
     constructor(props) {
         super(props);
     }
     static defaultProps = {
-        iconType: 'calendar'
+        iconType: 'calendar',
+        viewMode: 'days',
+        allowInputToggle: false
     }
     static propTypes = {
         id: React.PropTypes.string.isRequired,
@@ -19,24 +17,61 @@ class DateTimePicker extends React.Component {
         icon: React.PropTypes.oneOf([
             'right',
             'left'
-        ])
+        ]),
+        placeholder: React.PropTypes.string,
+        locale: React.PropTypes.string,
+        format: React.PropTypes.string,
+        disabledDates: React.PropTypes.arrayOf(
+            React.PropTypes.oneOfType([
+                React.PropTypes.string,
+                React.PropTypes.object
+            ])
+        ),
+        daysOfWeekDisabled: React.PropTypes.arrayOf(
+            React.PropTypes.number
+        ),
+        viewMode: React.PropTypes.oneOf([
+            'decades', 'years', 'months', 'days'
+        ]),
+        allowInputToggle: React.PropTypes.bool,
+        hasFeedback: React.PropTypes.bool,
+        bsStyle: React.PropTypes.oneOf([
+            '', 'success', 'warning', 'error'
+        ]),
+        getValue: React.PropTypes.func
     }
     state = this.props;
     componentDidMount() {
-        const {id} = this.state;
-        // const datePickerOptions = this.state.options;
-        // jQuery(`#${id}`).datetimepicker(datePickerOptions).on('dp.change', this.handleValidation);
-        jQuery(`#${id}`).datetimepicker();
-        window.datetimepicker = jQuery(`#${id}`).datetimepicker();
+        const {
+            id,
+            locale,
+            format,
+            disabledDates,
+            daysOfWeekDisabled,
+            viewMode,
+            allowInputToggle,
+            getValue
+        } = this.state;
+        const options = {
+            locale,
+            format,
+            disabledDates,
+            daysOfWeekDisabled,
+            viewMode,
+            allowInputToggle
+        };
+        if (getValue) {
+            jQuery(`#${id}`).datetimepicker(options).on('dp.change', this.handleGetValue);
+        } else {
+            jQuery(`#${id}`).datetimepicker(options);
+        }
     }
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return nextState.placeholder !== this.state.placeholder;
-    // }
-    // handleClick = () => {
-    //     this.setState({
-    //         placeholder: 'Ciao'
-    //     });
-    // }
+    setRef = (ref) => {
+        this.componentRef = ref;
+    }
+    handleGetValue = () => {
+        return this.props.getValue(this.componentRef.value);
+    }
     iconSet = (position) => {
         const {iconType, icon} = this.props;
         switch (true) {
@@ -50,44 +85,46 @@ class DateTimePicker extends React.Component {
                 return null;
         }
     }
+    setBsStyleGroup = () => {
+        const {bsStyle} = this.state;
+        switch (bsStyle) {
+            case 'success':
+                return 'has-success';
+            case 'warning':
+                return 'has-warning';
+            case 'error':
+                return 'has-error';
+            default:
+                return '';
+        }
+    }
     handleBsStyle = () => {
-        // let divClassName = (hasFeedback) ? 'form-group has-feedback' : 'form-group';
-        // switch (bsStyle) {
-        //     case 'success':
-        //         divClassName = divClassName.concat(' has-success');
-        //         bsStyle = hasFeedback ? <span className="glyphicon form-control-feedback glyphicon-ok"/> : null;
-        //         break;
-        //     case 'warning':
-        //         divClassName = divClassName.concat(' has-warning');
-        //         bsStyle = hasFeedback ? <span className="glyphicon form-control-feedback glyphicon-warning-sign"/> : null;
-        //         break;
-        //     case 'error':
-        //         divClassName = divClassName.concat(' has-error');
-        //         bsStyle = hasFeedback ? <span className="glyphicon form-control-feedback glyphicon-remove"/> : null;
-        //         break;
-        //     default:
-        //         bsStyle = hasFeedback ? <span className="glyphicon form-control-feedback"/> : null;
-        // }
-        return '';
+        const {bsStyle, hasFeedback} = this.state;
+        switch (bsStyle) {
+            case 'success':
+                return hasFeedback ? <span className="glyphicon form-control-feedback glyphicon-ok"/> : null;
+            case 'warning':
+                return hasFeedback ? <span className="glyphicon form-control-feedback glyphicon-warning-sign"/> : null;
+            case 'error':
+                return hasFeedback ? <span className="glyphicon form-control-feedback glyphicon-remove"/> : null;
+            default:
+                return hasFeedback ? <span className="glyphicon form-control-feedback"/> : null;
+        }
     }
     render() {
-        Perf.printInclusive(
-            Perf.getLastMeasurements()
-        );
-        const {label, help, id, name, placeholder, disabled, required} = this.state;
+        const {label, help, id, name, placeholder, disabled, required, hasFeedback} = this.state;
         const labelText = (label) ? <label className="control-label" htmlFor={id}>{label}</label> : null;
-        const divClassName = this.handleBsStyle();
+        const divFeedback = (hasFeedback) ? 'form-group has-feedback' : 'form-group';
+        const divBsStyle = this.setBsStyleGroup();
         return (
-            <div className={divClassName}>
+            <div key={id} className={divFeedback + ' ' + divBsStyle}>
                 {labelText}
                 <div className="input-group" id={id}>
                     {this.iconSet('left')}
-                    <input ref={id} className="form-control" type="text" name={name} required={required} disabled={disabled} placeholder={placeholder} />
+                    <input ref={this.setRef} className="form-control" type="text" name={name} required={required} disabled={disabled} placeholder={placeholder} />
                     {this.iconSet('right')}
                 </div>
-                {
-                    // TODO: bsStyle
-                }
+                {this.handleBsStyle()}
                 <span className="help-block">
                     {help}
                 </span>
@@ -95,5 +132,4 @@ class DateTimePicker extends React.Component {
         );
     }
 }
-
 export default DateTimePicker;
