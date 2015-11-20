@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "test": "jest",
-    "deploy-npm": "NODE_ENV=production babel --stage 0 -d build/ app/",
+    "deploy-npm": "NODE_ENV=production babel -d build/ app/",
     "npm-version": "npm version -m 'Deploying %s'"
   },
   "repository": {
