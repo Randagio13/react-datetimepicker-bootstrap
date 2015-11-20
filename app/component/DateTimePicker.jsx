@@ -1,4 +1,3 @@
-// import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
 import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
 import React from 'react';
 import jQuery from 'jquery';
