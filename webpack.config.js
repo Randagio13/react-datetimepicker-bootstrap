@@ -6,7 +6,7 @@ module.exports = {
     entry: './app/App.jsx',
     output: {
         path: './build',
-        filename: 'App.js',
+        filename: 'App.jsx',
         publicPath: '/'
     },
     resolve: {
@@ -29,6 +29,7 @@ module.exports = {
                 loader: 'babel',
                 query: {
                     presets: ['react', 'es2015', 'stage-0'],
+                    plugins: ['transform-runtime'],
                     cacheDirectory: true
                 }
             },
