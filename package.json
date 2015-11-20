@@ -5,7 +5,7 @@
   "main": "./build/App.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "BABEL_JEST_STAGE=0 jest",
+    "test": "jest",
     "deploy-npm": "NODE_ENV=production babel --stage 0 -d build/ app/",
     "npm-version": "npm version -m 'Deploying %s'"
   },
@@ -28,25 +28,26 @@
     "eonasdan-bootstrap-datetimepicker": "^4.15.35",
     "jquery": "^2.1.4",
     "moment": "^2.10.6",
-    "react-addons-perf": "^0.14.2",
+    "react-addons-perf": "^0.14.3",
     "react-bootstrap": "^0.28.1",
     "react-credit-card": "^0.10.0"
   },
   "devDependencies": {
-    "babel-core": "^6.0.17",
+    "babel-core": "^6.2.1",
     "babel-eslint": "^4.1.3",
+    "babel-jest": "^6.0.1",
     "babel-loader": "^6.2.0",
     "css-loader": "^0.23.0",
     "eslint": "^1.5.1",
     "eslint-loader": "^1.1.1",
     "eslint-plugin-react": "^3.9.0",
     "file-loader": "^0.8.4",
-    "jest-cli": "^0.7.1",
+    "jest-cli": "^0.8.0",
     "json-loader": "^0.5.3",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
     "node-libs-browser": "^0.5.3",
-    "react-addons-test-utils": "^0.14.2",
+    "react-addons-test-utils": "^0.14.3",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.6",
@@ -58,6 +59,13 @@
   },
   "jest": {
     "scriptPreprocessor": "./node_modules/babel-jest",
+    "testFileExtensions": [
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
     "unmockedModulePathPatterns": [
       "./node_modules/react",
       "./node_modules/react-dom",

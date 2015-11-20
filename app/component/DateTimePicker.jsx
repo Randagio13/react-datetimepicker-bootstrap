@@ -2,6 +2,7 @@ import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min
 import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
 import React from 'react';
 import jQuery from 'jquery';
+
 class DateTimePicker extends React.Component {
     constructor(props) {
         super(props);
@@ -132,4 +133,5 @@ class DateTimePicker extends React.Component {
         );
     }
 }
+
 export default DateTimePicker;
