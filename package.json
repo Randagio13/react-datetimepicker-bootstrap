@@ -30,8 +30,7 @@
     "jquery": "^2.1.4",
     "moment": "^2.10.6",
     "react-addons-perf": "^0.14.2",
-    "react-bootstrap": "^0.28.1",
-    "react-credit-card": "^0.10.0"
+    "react-bootstrap": "^0.28.1"
   },
   "devDependencies": {
     "babel": "^6.1.18",

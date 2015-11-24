@@ -1,4 +1,5 @@
 ## React DateTimePicker
+[![npm version](https://badge.fury.io/js/react-datetimepicker-bootstrap.svg)](https://badge.fury.io/js/react-datetimepicker-bootstrap)
 
 React Bootstrap DateTimePicker
 
