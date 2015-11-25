@@ -16,11 +16,24 @@ class DateTimePicker extends React.Component {
         iconType: React.PropTypes.string,
         icon: React.PropTypes.oneOf([
             'right',
-            'left'
+            'left',
+            'icon'
         ]),
         placeholder: React.PropTypes.string,
         locale: React.PropTypes.string,
         format: React.PropTypes.string,
+        minDate: React.PropTypes.arrayOf(
+            React.PropTypes.oneOfType([
+                React.PropTypes.string,
+                React.PropTypes.object
+            ])
+        ),
+        maxDate: React.PropTypes.arrayOf(
+            React.PropTypes.oneOfType([
+                React.PropTypes.string,
+                React.PropTypes.object
+            ])
+        ),
         disabledDates: React.PropTypes.arrayOf(
             React.PropTypes.oneOfType([
                 React.PropTypes.string,
@@ -50,7 +63,8 @@ class DateTimePicker extends React.Component {
             daysOfWeekDisabled,
             viewMode,
             allowInputToggle,
-            getValue
+            getValue,
+            icon
         } = this.state;
         const options = {
             locale,
@@ -58,7 +72,7 @@ class DateTimePicker extends React.Component {
             disabledDates,
             daysOfWeekDisabled,
             viewMode,
-            allowInputToggle
+            allowInputToggle: icon === undefined && allowInputToggle === false ? true : allowInputToggle
         };
         if (getValue) {
             jQuery(`#${id}`).datetimepicker(options).on('dp.change', this.handleGetValue);
@@ -112,14 +126,15 @@ class DateTimePicker extends React.Component {
         }
     }
     render() {
-        const {label, help, id, name, placeholder, disabled, required, hasFeedback} = this.state;
+        const {label, help, id, name, placeholder, disabled, required, hasFeedback, icon} = this.state;
         const labelText = (label) ? <label className="control-label" htmlFor={id}>{label}</label> : null;
         const divFeedback = (hasFeedback) ? 'form-group has-feedback' : 'form-group';
+        const classInput = icon === undefined ? 'col-xs-12' : 'input-group';
         const divBsStyle = this.setBsStyleGroup();
         return (
             <div key={id} className={divFeedback + ' ' + divBsStyle}>
                 {labelText}
-                <div className="input-group" id={id}>
+                <div className={classInput} id={id}>
                     {this.iconSet('left')}
                     <input ref={this.setRef} className="form-control" type="text" name={name} required={required} disabled={disabled} placeholder={placeholder} />
                     {this.iconSet('right')}

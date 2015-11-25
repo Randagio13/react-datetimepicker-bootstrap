@@ -29,8 +29,6 @@ module.exports = {
                 loader: 'babel',
                 query: {
                     presets: ['react', 'es2015', 'stage-0'],
-                    plugins: ['transform-runtime'],
-                    cacheDirectory: true
                 }
             },
             {test: /\.css$/, loader: 'style!css'},
