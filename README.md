@@ -1,6 +1,5 @@
-# React DateTimePicker Bootstrap
-
-React Bootstrap DateTimePicker
+## React DateTimePicker Bootstrap
+[![npm version](https://badge.fury.io/js/react-datetimepicker-bootstrap.svg)](https://badge.fury.io/js/react-datetimepicker-bootstrap)
 
 - This project is a port of  [bootstrap-datetimepicker](https://eonasdan.github.io/bootstrap-datetimepicker/) for React.
 
@@ -17,7 +16,7 @@ var DateTimePicker = require('react-datetimepicker-bootstrap');
 var Example = React.createClass({
   render: function() {
     return (
-      <DateTimePicker />
+      <DateTimePicker id="datetimepicker" />
     );
   }
 });
@@ -28,7 +27,7 @@ import DateTimePicker from 'react-datetimepicker-bootstrap';
 class Example extends React.Component {
     render() {
         return (
-            <DateTimePicker />
+            <DateTimePicker id="datetimepicker" />
         );
     }
 }
@@ -42,7 +41,9 @@ export default Example;
 - __iconType__ _string_ view iconSet. [here](http://getbootstrap.com/components/#glyphicons) and default value is 'calendar'.
 - __placeholder__ _string_ the simple placeholder input.
 - __locale__ _string_ translate the calendar e.g.: 'it', 'en', 'ru', ...
-- __format___ _string_ e.g.: 'D/M/YYYY'.
+- __format__ _string_ e.g.: 'D/M/YYYY'.
+- __minDate__ _arrayOf_ _string_ or _object_ e.g.(moment or new Date()).
+- __maxDate__ _arrayOf_ _string_ or _object_ e.g.(moment or new Date()).
 - __disabledDates__ _arrayOf_ _string_ or _object_ e.g.(moment or new Date()).
 - __daysOfWeekDisabled__ _array_ e.g. [0, 6].
 - __viewMode__ _string_ accept: 'decades', 'years', 'months', __'days'__ is default.
