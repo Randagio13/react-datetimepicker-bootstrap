@@ -6,7 +6,7 @@ module.exports = {
     entry: './app/App.jsx',
     output: {
         path: './build',
-        filename: 'App.jsx',
+        filename: 'App.js',
         publicPath: '/'
     },
     resolve: {
