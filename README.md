@@ -1,5 +1,5 @@
 ## React DateTimePicker Bootstrap
-[![npm version](https://badge.fury.io/js/react-datetimepicker-bootstrap.svg)](https://badge.fury.io/js/react-datetimepicker-bootstrap)
+[![Build Status](https://travis-ci.org/iMasterAle/react-datetimepicker-bootstrap.svg)](https://travis-ci.org/iMasterAle/react-datetimepicker-bootstrap) [![npm version](https://badge.fury.io/js/react-datetimepicker-bootstrap.svg)](https://badge.fury.io/js/react-datetimepicker-bootstrap)
 
 - This project is a port of  [bootstrap-datetimepicker](https://eonasdan.github.io/bootstrap-datetimepicker/) for React.
 
