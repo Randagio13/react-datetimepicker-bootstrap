@@ -64,6 +64,8 @@ class DateTimePicker extends React.Component {
             viewMode,
             allowInputToggle,
             getValue,
+            minDate,
+            maxDate,
             icon
         } = this.state;
         const options = {
@@ -72,7 +74,9 @@ class DateTimePicker extends React.Component {
             disabledDates,
             daysOfWeekDisabled,
             viewMode,
-            allowInputToggle: icon === undefined && allowInputToggle === false ? true : allowInputToggle
+            allowInputToggle: icon === undefined && allowInputToggle === false ? true : allowInputToggle,
+            minDate,
+            maxDate
         };
         if (getValue) {
             jQuery(`#${id}`).datetimepicker(options).on('dp.change', this.handleGetValue);
