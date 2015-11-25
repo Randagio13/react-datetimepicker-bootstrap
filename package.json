@@ -18,7 +18,9 @@
     "datetimepicker",
     "bootstrap",
     "react-datetimepicker-bootstrap",
-    "react-datetimepicker"
+    "react-datetimepicker",
+    "react-bootstrap",
+    "react-bootstrap-datetimepicker"
   ],
   "author": "Alessandro Casazza",
   "license": "MIT",
