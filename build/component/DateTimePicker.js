@@ -106,6 +106,8 @@ var DateTimePicker = (function (_React$Component) {
             var viewMode = _state.viewMode;
             var allowInputToggle = _state.allowInputToggle;
             var getValue = _state.getValue;
+            var minDate = _state.minDate;
+            var maxDate = _state.maxDate;
             var icon = _state.icon;
 
             var options = {
@@ -114,7 +116,9 @@ var DateTimePicker = (function (_React$Component) {
                 disabledDates: disabledDates,
                 daysOfWeekDisabled: daysOfWeekDisabled,
                 viewMode: viewMode,
-                allowInputToggle: icon === undefined && allowInputToggle === false ? true : allowInputToggle
+                allowInputToggle: icon === undefined && allowInputToggle === false ? true : allowInputToggle,
+                minDate: minDate,
+                maxDate: maxDate
             };
             if (getValue) {
                 (0, _jquery2.default)('#' + id).datetimepicker(options).on('dp.change', this.handleGetValue);
