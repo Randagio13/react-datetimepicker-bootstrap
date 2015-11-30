@@ -51,7 +51,9 @@ class DateTimePicker extends React.Component {
         bsStyle: React.PropTypes.oneOf([
             '', 'success', 'warning', 'error'
         ]),
-        getValue: React.PropTypes.func
+        getValue: React.PropTypes.func,
+        inline: React.PropTypes.bool,
+        sideBySide: React.PropTypes.bool
     }
     state = this.props;
     componentDidMount() {
@@ -66,7 +68,9 @@ class DateTimePicker extends React.Component {
             getValue,
             minDate,
             maxDate,
-            icon
+            icon,
+            inline,
+            sideBySide
         } = this.state;
         const options = {
             locale,
@@ -76,7 +80,9 @@ class DateTimePicker extends React.Component {
             viewMode,
             allowInputToggle: icon === undefined && allowInputToggle === false ? true : allowInputToggle,
             minDate,
-            maxDate
+            maxDate,
+            inline,
+            sideBySide
         };
         if (getValue) {
             jQuery(`#${id}`).datetimepicker(options).on('dp.change', this.handleGetValue);
@@ -152,4 +158,4 @@ class DateTimePicker extends React.Component {
     }
 }
 
-export default DateTimePicker;
+module.exports = DateTimePicker;

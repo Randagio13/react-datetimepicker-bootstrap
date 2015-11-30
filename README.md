@@ -50,3 +50,5 @@ export default Example;
 - __allowInputToggle__ _bool_ will show datetimepicker on textbox focus.
 - __hasFeedback__ _bool_ show the tipical bootstrap feedback style.
 - __getValue__ _func_ return the input value.
+- __inline__ _bool_ view datetimepicker without modal.
+- __sideBySide__ _bool_ view datetimepicker without icon date/time.
