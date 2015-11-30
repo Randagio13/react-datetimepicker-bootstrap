@@ -106,6 +106,9 @@ var DateTimePicker = (function (_React$Component) {
             var viewMode = _state.viewMode;
             var allowInputToggle = _state.allowInputToggle;
             var getValue = _state.getValue;
+            var minDate = _state.minDate;
+            var maxDate = _state.maxDate;
+            var icon = _state.icon;
 
             var options = {
                 locale: locale,
@@ -113,7 +116,9 @@ var DateTimePicker = (function (_React$Component) {
                 disabledDates: disabledDates,
                 daysOfWeekDisabled: daysOfWeekDisabled,
                 viewMode: viewMode,
-                allowInputToggle: allowInputToggle
+                allowInputToggle: icon === undefined && allowInputToggle === false ? true : allowInputToggle,
+                minDate: minDate,
+                maxDate: maxDate
             };
             if (getValue) {
                 (0, _jquery2.default)('#' + id).datetimepicker(options).on('dp.change', this.handleGetValue);
@@ -133,6 +138,7 @@ var DateTimePicker = (function (_React$Component) {
             var disabled = _state2.disabled;
             var required = _state2.required;
             var hasFeedback = _state2.hasFeedback;
+            var icon = _state2.icon;
 
             var labelText = label ? _react2.default.createElement(
                 'label',
@@ -140,6 +146,7 @@ var DateTimePicker = (function (_React$Component) {
                 label
             ) : null;
             var divFeedback = hasFeedback ? 'form-group has-feedback' : 'form-group';
+            var classInput = icon === undefined ? 'col-xs-12' : 'input-group';
             var divBsStyle = this.setBsStyleGroup();
             return _react2.default.createElement(
                 'div',
@@ -147,7 +154,7 @@ var DateTimePicker = (function (_React$Component) {
                 labelText,
                 _react2.default.createElement(
                     'div',
-                    { className: 'input-group', id: id },
+                    { className: classInput, id: id },
                     this.iconSet('left'),
                     _react2.default.createElement('input', { ref: this.setRef, className: 'form-control', type: 'text', name: name, required: required, disabled: disabled, placeholder: placeholder }),
                     this.iconSet('right')
@@ -173,10 +180,12 @@ DateTimePicker.defaultProps = {
 DateTimePicker.propTypes = {
     id: _react2.default.PropTypes.string.isRequired,
     iconType: _react2.default.PropTypes.string,
-    icon: _react2.default.PropTypes.oneOf(['right', 'left']),
+    icon: _react2.default.PropTypes.oneOf(['right', 'left', 'icon']),
     placeholder: _react2.default.PropTypes.string,
     locale: _react2.default.PropTypes.string,
     format: _react2.default.PropTypes.string,
+    minDate: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.object])),
+    maxDate: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.object])),
     disabledDates: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.object])),
     daysOfWeekDisabled: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.number),
     viewMode: _react2.default.PropTypes.oneOf(['decades', 'years', 'months', 'days']),
