@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "test": "jest",
+    "prerelease": "NODE_ENV=production webpack-dev-server",
     "deploy-npm": "NODE_ENV=production babel -d build/ app/",
     "npm-version": "npm version -m 'Deploying %s'"
   },
@@ -65,21 +66,15 @@
     "react-dom": ">=0.14.*"
   },
   "jest": {
-    "scriptPreprocessor": "jest.config.js",
-    "testFileExtensions": [
-      "js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "preprocessorIgnorePatterns": [
-      "/node_modules/"
-    ],
+    "scriptPreprocessor": "./node_modules/babel-jest",
     "unmockedModulePathPatterns": [
-      "./node_modules/react/",
-      "./node_modules/react-dom/",
-      "./node_modules/react-addons-test-utils/"
+      "./node_modules/react",
+      "./node_modules/react-dom",
+      "./node_modules/react-addons-test-utils",
+      "./node_modules/fbjs"
+    ],
+    "modulePathIgnorePatterns": [
+      "./node_modules/"
     ]
   }
 }
