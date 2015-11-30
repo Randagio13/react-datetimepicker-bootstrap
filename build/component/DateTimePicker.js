@@ -2,10 +2,6 @@
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
 require('eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js');
 
 var _react = require('react');
@@ -109,6 +105,8 @@ var DateTimePicker = (function (_React$Component) {
             var minDate = _state.minDate;
             var maxDate = _state.maxDate;
             var icon = _state.icon;
+            var inline = _state.inline;
+            var sideBySide = _state.sideBySide;
 
             var options = {
                 locale: locale,
@@ -118,7 +116,9 @@ var DateTimePicker = (function (_React$Component) {
                 viewMode: viewMode,
                 allowInputToggle: icon === undefined && allowInputToggle === false ? true : allowInputToggle,
                 minDate: minDate,
-                maxDate: maxDate
+                maxDate: maxDate,
+                inline: inline,
+                sideBySide: sideBySide
             };
             if (getValue) {
                 (0, _jquery2.default)('#' + id).datetimepicker(options).on('dp.change', this.handleGetValue);
@@ -192,6 +192,9 @@ DateTimePicker.propTypes = {
     allowInputToggle: _react2.default.PropTypes.bool,
     hasFeedback: _react2.default.PropTypes.bool,
     bsStyle: _react2.default.PropTypes.oneOf(['', 'success', 'warning', 'error']),
-    getValue: _react2.default.PropTypes.func
+    getValue: _react2.default.PropTypes.func,
+    inline: _react2.default.PropTypes.bool,
+    sideBySide: _react2.default.PropTypes.bool
 };
-exports.default = DateTimePicker;
+
+module.exports = DateTimePicker;
