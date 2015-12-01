@@ -39,6 +39,13 @@ module.exports = {
         new webpack.ProvidePlugin({
             React: 'react',
             ReactDOM: 'react-dom'
+        }),
+        new webpack.DefinePlugin({
+            process: {
+                env: {
+                    NODE_ENV: '"' + process.env.NODE_ENV + '"'
+                }
+            }
         })
     ],
     devServer: {
