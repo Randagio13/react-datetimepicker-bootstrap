@@ -2,10 +2,7 @@
     "presets": ["react", "es2015", "stage-0"],
     "env": {
         "production": {
-            "plugins": [
-                "transform-react-constant-elements",
-                "transform-inline-environment-variables"
-            ]
+            "plugins": ["transform-react-constant-elements"]
         }
     }
 }

@@ -1,11 +1,12 @@
 var webpack = require('webpack');
 var path = require('path');
+var nodeModules = path.resolve(__dirname, 'node_modules');
 
 module.exports = {
     devtool: process.env.NODE_ENV !== 'production' ? 'eval' : null,
-    entry: './app/App.jsx',
+    entry: path.resolve(__dirname, './app/App.jsx'),
     output: {
-        path: './build',
+        path: path.resolve(__dirname, './build'),
         filename: 'App.js',
         publicPath: '/'
     },
@@ -25,11 +26,8 @@ module.exports = {
         loaders: [
             {
                 test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel',
-                query: {
-                    presets: ['react', 'es2015', 'stage-0'],
-                }
+                exclude: [nodeModules],
+                loader: 'babel'
             },
             {test: /\.css$/, loader: 'style!css'},
             {test: /\.less$/, loader: 'style!css!less'},
@@ -41,13 +39,6 @@ module.exports = {
         new webpack.ProvidePlugin({
             React: 'react',
             ReactDOM: 'react-dom'
-        }),
-        new webpack.DefinePlugin({
-            process: {
-                env: {
-                    NODE_ENV: '"' + process.env.NODE_ENV + '"'
-                }
-            }
         })
     ],
     devServer: {

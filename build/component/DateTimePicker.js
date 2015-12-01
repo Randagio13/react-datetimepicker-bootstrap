@@ -2,10 +2,6 @@
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
 require('eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js');
 
 var _react = require('react');
@@ -23,6 +19,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _ref = _react2.default.createElement('span', { className: 'glyphicon form-control-feedback glyphicon-ok' });
+
+var _ref2 = _react2.default.createElement('span', { className: 'glyphicon form-control-feedback glyphicon-warning-sign' });
+
+var _ref3 = _react2.default.createElement('span', { className: 'glyphicon form-control-feedback glyphicon-remove' });
+
+var _ref4 = _react2.default.createElement('span', { className: 'glyphicon form-control-feedback' });
 
 var DateTimePicker = (function (_React$Component) {
     _inherits(DateTimePicker, _React$Component);
@@ -81,13 +85,13 @@ var DateTimePicker = (function (_React$Component) {
 
             switch (bsStyle) {
                 case 'success':
-                    return hasFeedback ? _react2.default.createElement('span', { className: 'glyphicon form-control-feedback glyphicon-ok' }) : null;
+                    return hasFeedback ? _ref : null;
                 case 'warning':
-                    return hasFeedback ? _react2.default.createElement('span', { className: 'glyphicon form-control-feedback glyphicon-warning-sign' }) : null;
+                    return hasFeedback ? _ref2 : null;
                 case 'error':
-                    return hasFeedback ? _react2.default.createElement('span', { className: 'glyphicon form-control-feedback glyphicon-remove' }) : null;
+                    return hasFeedback ? _ref3 : null;
                 default:
-                    return hasFeedback ? _react2.default.createElement('span', { className: 'glyphicon form-control-feedback' }) : null;
+                    return hasFeedback ? _ref4 : null;
             }
         };
 
@@ -109,6 +113,8 @@ var DateTimePicker = (function (_React$Component) {
             var minDate = _state.minDate;
             var maxDate = _state.maxDate;
             var icon = _state.icon;
+            var inline = _state.inline;
+            var sideBySide = _state.sideBySide;
 
             var options = {
                 locale: locale,
@@ -118,7 +124,9 @@ var DateTimePicker = (function (_React$Component) {
                 viewMode: viewMode,
                 allowInputToggle: icon === undefined && allowInputToggle === false ? true : allowInputToggle,
                 minDate: minDate,
-                maxDate: maxDate
+                maxDate: maxDate,
+                inline: inline,
+                sideBySide: sideBySide
             };
             if (getValue) {
                 (0, _jquery2.default)('#' + id).datetimepicker(options).on('dp.change', this.handleGetValue);
@@ -192,6 +200,9 @@ DateTimePicker.propTypes = {
     allowInputToggle: _react2.default.PropTypes.bool,
     hasFeedback: _react2.default.PropTypes.bool,
     bsStyle: _react2.default.PropTypes.oneOf(['', 'success', 'warning', 'error']),
-    getValue: _react2.default.PropTypes.func
+    getValue: _react2.default.PropTypes.func,
+    inline: _react2.default.PropTypes.bool,
+    sideBySide: _react2.default.PropTypes.bool
 };
-exports.default = DateTimePicker;
+
+module.exports = DateTimePicker;
