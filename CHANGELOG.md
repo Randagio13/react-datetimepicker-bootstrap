@@ -1,5 +1,8 @@
 ## Changelog
 
+### 0.3.1
+* Fix compile __process.env__ with babel.
+
 ### 0.3.0
 * Add feature __inline__ and __sideBySide__ props.
 * Fix run test jest.
