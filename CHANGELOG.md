@@ -1,10 +1,15 @@
 ## Changelog
 
+### 0.4.0
+* Add prop __calendarWeeks__, It shows the week of the year to the left of first day of the week.
+* Add prop __toolbarPlacement__, It changes the placement of the icon toolbar
+
 ### 0.3.1
 * Fix compile __process.env__ with babel.
 
 ### 0.3.0
-* Add feature __inline__ and __sideBySide__ props.
+* Add prop __inline__
+* Add prop __sideBySide__
 * Fix run test jest.
 
 ### 0.2.1
