@@ -9,15 +9,18 @@ class DateTimePicker extends React.Component {
     static defaultProps = {
         iconType: 'calendar',
         viewMode: 'days',
-        allowInputToggle: false
+        allowInputToggle: false,
+        locale: 'en',
+        hasFeedback: false,
+        calendarWeeks: false,
+        toolbarPlacement: 'default'
     }
     static propTypes = {
         id: React.PropTypes.string.isRequired,
         iconType: React.PropTypes.string,
         icon: React.PropTypes.oneOf([
             'right',
-            'left',
-            'icon'
+            'left'
         ]),
         placeholder: React.PropTypes.string,
         locale: React.PropTypes.string,
@@ -53,7 +56,11 @@ class DateTimePicker extends React.Component {
         ]),
         getValue: React.PropTypes.func,
         inline: React.PropTypes.bool,
-        sideBySide: React.PropTypes.bool
+        sideBySide: React.PropTypes.bool,
+        calendarWeeks: React.PropTypes.bool,
+        toolbarPlacement: React.PropTypes.oneOf([
+            'default', 'top', 'bottom'
+        ])
     }
     state = this.props;
     componentDidMount() {
@@ -70,7 +77,9 @@ class DateTimePicker extends React.Component {
             maxDate,
             icon,
             inline,
-            sideBySide
+            sideBySide,
+            calendarWeeks,
+            toolbarPlacement
         } = this.state;
         const options = {
             locale,
@@ -82,7 +91,9 @@ class DateTimePicker extends React.Component {
             minDate,
             maxDate,
             inline,
-            sideBySide
+            sideBySide,
+            calendarWeeks,
+            toolbarPlacement
         };
         if (getValue) {
             jQuery(`#${id}`).datetimepicker(options).on('dp.change', this.handleGetValue);
