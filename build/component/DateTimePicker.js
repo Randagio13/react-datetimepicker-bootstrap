@@ -115,6 +115,8 @@ var DateTimePicker = (function (_React$Component) {
             var icon = _state.icon;
             var inline = _state.inline;
             var sideBySide = _state.sideBySide;
+            var calendarWeeks = _state.calendarWeeks;
+            var toolbarPlacement = _state.toolbarPlacement;
 
             var options = {
                 locale: locale,
@@ -126,7 +128,9 @@ var DateTimePicker = (function (_React$Component) {
                 minDate: minDate,
                 maxDate: maxDate,
                 inline: inline,
-                sideBySide: sideBySide
+                sideBySide: sideBySide,
+                calendarWeeks: calendarWeeks,
+                toolbarPlacement: toolbarPlacement
             };
             if (getValue) {
                 (0, _jquery2.default)('#' + id).datetimepicker(options).on('dp.change', this.handleGetValue);
@@ -183,12 +187,16 @@ var DateTimePicker = (function (_React$Component) {
 DateTimePicker.defaultProps = {
     iconType: 'calendar',
     viewMode: 'days',
-    allowInputToggle: false
+    allowInputToggle: false,
+    locale: 'en',
+    hasFeedback: false,
+    calendarWeeks: false,
+    toolbarPlacement: 'default'
 };
 DateTimePicker.propTypes = {
     id: _react2.default.PropTypes.string.isRequired,
     iconType: _react2.default.PropTypes.string,
-    icon: _react2.default.PropTypes.oneOf(['right', 'left', 'icon']),
+    icon: _react2.default.PropTypes.oneOf(['right', 'left']),
     placeholder: _react2.default.PropTypes.string,
     locale: _react2.default.PropTypes.string,
     format: _react2.default.PropTypes.string,
@@ -202,7 +210,9 @@ DateTimePicker.propTypes = {
     bsStyle: _react2.default.PropTypes.oneOf(['', 'success', 'warning', 'error']),
     getValue: _react2.default.PropTypes.func,
     inline: _react2.default.PropTypes.bool,
-    sideBySide: _react2.default.PropTypes.bool
+    sideBySide: _react2.default.PropTypes.bool,
+    calendarWeeks: _react2.default.PropTypes.bool,
+    toolbarPlacement: _react2.default.PropTypes.oneOf(['default', 'top', 'bottom'])
 };
 
 module.exports = DateTimePicker;
