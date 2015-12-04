@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.4.1
+* Update README.md
+* Update modules
+
 ### 0.4.0
 * Add prop __calendarWeeks__, It shows the week of the year to the left of first day of the week.
 * Add prop __toolbarPlacement__, It changes the placement of the icon toolbar
