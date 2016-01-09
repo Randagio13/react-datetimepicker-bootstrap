@@ -1,11 +1,8 @@
 import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
-import React from 'react';
+import {Component} from 'react';
 import jQuery from 'jquery';
 
-class DateTimePicker extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+class DateTimePicker extends Component {
     static defaultProps = {
         iconType: 'calendar',
         viewMode: 'days',
@@ -14,7 +11,7 @@ class DateTimePicker extends React.Component {
         hasFeedback: false,
         calendarWeeks: false,
         toolbarPlacement: 'default'
-    }
+    };
     static propTypes = {
         id: React.PropTypes.string.isRequired,
         iconType: React.PropTypes.string,
@@ -60,8 +57,9 @@ class DateTimePicker extends React.Component {
         calendarWeeks: React.PropTypes.bool,
         toolbarPlacement: React.PropTypes.oneOf([
             'default', 'top', 'bottom'
-        ])
-    }
+        ]),
+        disabled: React.PropTypes.bool
+    };
     state = this.props;
     componentDidMount() {
         const {
@@ -103,10 +101,10 @@ class DateTimePicker extends React.Component {
     }
     setRef = (ref) => {
         this.componentRef = ref;
-    }
+    };
     handleGetValue = () => {
         return this.props.getValue(this.componentRef.value);
-    }
+    };
     iconSet = (position) => {
         const {iconType, icon} = this.props;
         switch (true) {
@@ -119,7 +117,7 @@ class DateTimePicker extends React.Component {
             default:
                 return null;
         }
-    }
+    };
     setBsStyleGroup = () => {
         const {bsStyle} = this.state;
         switch (bsStyle) {
@@ -132,7 +130,7 @@ class DateTimePicker extends React.Component {
             default:
                 return '';
         }
-    }
+    };
     handleBsStyle = () => {
         const {bsStyle, hasFeedback} = this.state;
         switch (bsStyle) {
@@ -145,7 +143,7 @@ class DateTimePicker extends React.Component {
             default:
                 return hasFeedback ? <span className="glyphicon form-control-feedback"/> : null;
         }
-    }
+    };
     render() {
         const {label, help, id, name, placeholder, disabled, required, hasFeedback, icon} = this.state;
         const labelText = (label) ? <label className="control-label" htmlFor={id}>{label}</label> : null;

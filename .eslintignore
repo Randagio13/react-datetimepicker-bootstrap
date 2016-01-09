@@ -1,3 +1,5 @@
 node_modules/**
 *.config.js
 __tests__
+server.js
+*.m

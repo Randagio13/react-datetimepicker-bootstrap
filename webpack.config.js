@@ -1,12 +1,15 @@
 var webpack = require('webpack');
 var path = require('path');
-var nodeModules = path.resolve(__dirname, 'node_modules');
 
 module.exports = {
     devtool: process.env.NODE_ENV !== 'production' ? 'eval' : null,
-    entry: path.resolve(__dirname, './app/App.jsx'),
+    entry: [
+        'webpack-dev-server/client?http://localhost:3000',
+        'webpack/hot/only-dev-server',
+        './app/App'
+    ],
     output: {
-        path: path.resolve(__dirname, './build'),
+        path: path.join(__dirname, 'build'),
         filename: 'App.js',
         publicPath: '/'
     },
@@ -15,7 +18,7 @@ module.exports = {
             path.resolve('./app/'),
             path.resolve('./node_modules/')
         ],
-        modulesDirectories: ['node_modules', 'app'],
+        modulesDirectories: ['node_modules'],
         extensions: ['', '.jsx', '.js']
     },
     module: {
@@ -25,9 +28,21 @@ module.exports = {
         }],
         loaders: [
             {
+                test: /\.(jsx|js)?$/,
+                exclude: /node_modules/,
+                loader: 'babel',
+                query: {
+                    presets: ['react', 'es2015', 'stage-0'],
+                    plugins: [
+                        'transform-node-env-inline'
+                    ],
+                    cacheDirectory: true
+                }
+            },
+            {
                 test: /\.jsx?$/,
-                exclude: [nodeModules],
-                loader: 'babel'
+                loaders: ['react-hot', 'babel'],
+                include: path.join(__dirname, 'app')
             },
             {test: /\.css$/, loader: 'style!css'},
             {test: /\.less$/, loader: 'style!css!less'},
@@ -36,22 +51,28 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            React: 'react',
-            ReactDOM: 'react-dom'
-        }),
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             process: {
                 env: {
-                    NODE_ENV: '"' + process.env.NODE_ENV + '"'
+                    NODE_ENV: '"' + process.env.NODE_ENV + '"',
+                    BETA: JSON.stringify(JSON.parse(!!process.env.BETA))
                 }
             }
+        }),
+        new webpack.ProvidePlugin({
+            React: 'react',
+            ReactDOM: 'react-dom'
         })
     ],
     devServer: {
         contentBase: './build',
         noInfo: false,
-        hot: false,
-        inline: true
+        hot: true,
+        inline: true,
+        stats: {
+            colors: true
+        }
     }
 };

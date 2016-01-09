@@ -1,5 +1,4 @@
-## React DateTimePicker Bootstrap
-[![Build Status](https://travis-ci.org/iMasterAle/react-datetimepicker-bootstrap.svg)](https://travis-ci.org/iMasterAle/react-datetimepicker-bootstrap) [![npm version](https://badge.fury.io/js/react-datetimepicker-bootstrap.svg)](https://badge.fury.io/js/react-datetimepicker-bootstrap)
+## React DateTimePicker Bootstrap [![npm version](https://badge.fury.io/js/react-datetimepicker-bootstrap.svg)](https://badge.fury.io/js/react-datetimepicker-bootstrap) [![Build Status](https://travis-ci.org/iMasterAle/react-datetimepicker-bootstrap.svg)](https://travis-ci.org/iMasterAle/react-datetimepicker-bootstrap)
 
 - This project is a port of  [bootstrap-datetimepicker](https://eonasdan.github.io/bootstrap-datetimepicker/) for React.
 
@@ -7,12 +6,15 @@
 
 - [Changelog](/CHANGELOG.md)
 
-## Usage
-Installation:
+## Installation
 
 Using [npm](https://npmjs.com):
 
-    $ npm install react-datetimepicker-bootstrap
+```js
+$ npm install react-datetimepicker-bootstrap
+```
+
+## Usage
 
 ```js
 // ES5
@@ -43,7 +45,7 @@ export default Example;
 ## Props component:
 
 Props | Type | isRequired | Default | Description
-:---: | :--: | :--------: | :-----: | :---------:
+:--- | :-- | :--------: | :----- | :---------
 __id__ | _string_ | ✔ | undefined | DateTimePicker Id
 __icon__ | _string_ | ✘ | undefined | The position of the icon, accept: 'left' or 'right'
 __iconType__ | _string_ | ✘ | 'calendar' | View the bootstrap [iconSet](http://getbootstrap.com/components/#glyphicons)
@@ -63,7 +65,7 @@ __inline__ | _bool_ | ✘ | false | View the datetimepicker without the modal vi
 __sideBySide__ | _bool_ | ✘ | false | View the datetimepicker without the icon date/time
 __calendarWeeks__ | _bool_ | ✘ | false | It shows the week of the year to the left of first day of the week
 __toolbarPlacement__ | _bool_ | ✘ | false | It changes the placement of the icon toolbar
+**disabled** | _bool_ | ✘ | false | It disabled the input field.
 
-## Thanks
-
-Thanks for yours contribute
+## License
+MIT [(http://www.opensource.org/licenses/mit-license.php)](http://www.opensource.org/licenses/mit-license.php)
