@@ -2,3 +2,5 @@ node_modules/**
 build/**
 *.config.js
 __tests__
+server.js
+*.m
