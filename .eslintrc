@@ -3,5 +3,8 @@
   "extends": "rackt",
   "plugins": [
     "react"
-  ]
+  ],
+  "rules": {
+    semi: [2, "always"]
+  }
 }
