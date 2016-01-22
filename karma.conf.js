@@ -4,13 +4,13 @@ var webpack = require('webpack');
 module.exports = function (config) {
   config.set({
     singleRun: true,
-    browsers: ['Chrome', 'Chrome_without_security'],
-    customLaunchers: {
-      Chrome_without_security: {
-        base: 'Chrome',
-        flags: ['--disable-web-security']
-      }
-    },
+    browsers: ['Chrome'],
+    // customLaunchers: {
+    //   Chrome_without_security: {
+    //     base: 'Chrome',
+    //     flags: ['--disable-web-security']
+    //   }
+    // },
     frameworks: ['mocha'],
     files: [
       'tests.webpack.js'
