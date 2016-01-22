@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "webpack-dev-server": "webpack-dev-server",
-    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
+    "test": "./node_modules/.bin/karma start",
     "prerelease": "NODE_ENV=production server.js",
     "deploy-npm": "NODE_ENV=production babel -d build/ app/",
     "npm-version": "npm version -m 'Deploying v%s'"
