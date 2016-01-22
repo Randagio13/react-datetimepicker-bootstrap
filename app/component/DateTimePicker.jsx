@@ -1,5 +1,5 @@
 import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
-import React, { Component } from 'react';
+import { Component, PropTypes } from 'react';
 import jQuery from 'jquery';
 
 class DateTimePicker extends Component {
@@ -13,52 +13,52 @@ class DateTimePicker extends Component {
     toolbarPlacement: 'default'
   };
   static propTypes = {
-    id: React.PropTypes.string.isRequired,
-    iconType: React.PropTypes.string,
-    icon: React.PropTypes.oneOf([
+    id: PropTypes.string.isRequired,
+    iconType: PropTypes.string,
+    icon: PropTypes.oneOf([
       'right',
       'left'
     ]),
-    placeholder: React.PropTypes.string,
-    locale: React.PropTypes.string,
-    format: React.PropTypes.string,
-    minDate: React.PropTypes.arrayOf(
-      React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.object
+    placeholder: PropTypes.string,
+    locale: PropTypes.string,
+    format: PropTypes.string,
+    minDate: PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
       ])
     ),
-    maxDate: React.PropTypes.arrayOf(
-      React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.object
+    maxDate: PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
       ])
     ),
-    disabledDates: React.PropTypes.arrayOf(
-      React.PropTypes.oneOfType([
-        React.PropTypes.string,
-        React.PropTypes.object
+    disabledDates: PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
       ])
     ),
-    daysOfWeekDisabled: React.PropTypes.arrayOf(
-      React.PropTypes.number
+    daysOfWeekDisabled: PropTypes.arrayOf(
+      PropTypes.number
     ),
-    viewMode: React.PropTypes.oneOf([
+    viewMode: PropTypes.oneOf([
       'decades', 'years', 'months', 'days'
     ]),
-    allowInputToggle: React.PropTypes.bool,
-    hasFeedback: React.PropTypes.bool,
-    bsStyle: React.PropTypes.oneOf([
+    allowInputToggle: PropTypes.bool,
+    hasFeedback: PropTypes.bool,
+    bsStyle: PropTypes.oneOf([
       '', 'success', 'warning', 'error'
     ]),
-    getValue: React.PropTypes.func,
-    inline: React.PropTypes.bool,
-    sideBySide: React.PropTypes.bool,
-    calendarWeeks: React.PropTypes.bool,
-    toolbarPlacement: React.PropTypes.oneOf([
+    getValue: PropTypes.func,
+    inline: PropTypes.bool,
+    sideBySide: PropTypes.bool,
+    calendarWeeks: PropTypes.bool,
+    toolbarPlacement: PropTypes.oneOf([
       'default', 'top', 'bottom'
     ]),
-    disabled: React.PropTypes.bool
+    disabled: PropTypes.bool
   };
   state = this.props;
   componentDidMount() {
