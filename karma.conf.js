@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = function (config) {
   config.set({
-    singleRun: false,
+    singleRun: true,
     browsers: ['Chrome', 'Chrome_without_security'],
     customLaunchers: {
       Chrome_without_security: {
