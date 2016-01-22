@@ -3,3 +3,5 @@ node_modules/**
 __tests__
 server.js
 *.m
+*.conf.js
+tests.webpack.js
