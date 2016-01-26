@@ -12,7 +12,7 @@ module.exports = function (config) {
     preprocessors: {
       'tests.webpack.js': ['webpack', 'sourcemap']
     },
-    reporters: ['dots', 'coverage'],
+    reporters: ['dots', 'coverage', 'mocha'],
     webpack: {
       devtool: 'inline-source-map',
       resolve: {
