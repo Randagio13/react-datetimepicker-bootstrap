@@ -4,13 +4,7 @@ var webpack = require('webpack');
 module.exports = function (config) {
   config.set({
     singleRun: false,
-    browsers: ['Chrome', 'Chrome_travis_ci'],
-    customLaunchers: {
-      Chrome_travis_ci: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    },
+    browsers: ['Chrome'],
     frameworks: ['mocha'],
     files: [
       'tests.webpack.js'
