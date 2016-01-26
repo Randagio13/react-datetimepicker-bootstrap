@@ -6,7 +6,10 @@
     ],
     "env": {
         "production": {
-            "plugins": ["transform-react-constant-elements"]
+            "plugins": [
+              "transform-react-constant-elements",
+              "uglify:after"
+            ]
         }
     }
 }
