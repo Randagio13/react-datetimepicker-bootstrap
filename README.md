@@ -67,7 +67,7 @@ __calendarWeeks__ | _bool_ | ✘ | false | It shows the week of the year to the 
 __toolbarPlacement__ | _bool_ | ✘ | false | It changes the placement of the icon toolbar
 **disabled** | _bool_ | ✘ | false | It disabled the input field.
 
-### tooltips
+### `tooltips`:
 - __Type:__ _object_.
 - __isRequired:__ ✘.
 - __DefaultValue:__
