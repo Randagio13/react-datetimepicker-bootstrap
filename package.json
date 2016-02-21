@@ -13,7 +13,7 @@
     "test:dev": "./node_modules/.bin/karma start karma.conf.js --browsers Firefox",
     "prerelease": "NODE_ENV=production server.js",
     "deploy:npm": "NODE_ENV=production babel -d build/ app/",
-    "npm-version": "npm version -m 'v%s'"
+    "npm:version": "npm version -m 'v%s'"
   },
   "repository": {
     "type": "git",

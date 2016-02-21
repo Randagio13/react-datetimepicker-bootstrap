@@ -2,6 +2,6 @@ node_modules/**
 *.config.js
 __tests__
 server.js
-*.m
+*.md
 *.conf.js
 *.webpack.js

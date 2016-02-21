@@ -67,5 +67,28 @@ __calendarWeeks__ | _bool_ | ✘ | false | It shows the week of the year to the 
 __toolbarPlacement__ | _bool_ | ✘ | false | It changes the placement of the icon toolbar
 **disabled** | _bool_ | ✘ | false | It disabled the input field.
 
+- ### tooltips
+    - __Type:__ _object_.
+    - __isRequired:__ ✘.
+    - __DefaultValue:__
+      ```js
+      {
+        today: 'Go to today',
+        clear: 'Clear selection',
+        close: 'Close the picker',
+        selectMonth: 'Select Month',
+        prevMonth: 'Previous Month',
+        nextMonth: 'Next Month',
+        selectYear: 'Select Year',
+        prevYear: 'Previous Year',
+        nextYear: 'Next Year',
+        selectDecade: 'Select Decade',
+        prevDecade: 'Previous Decade',
+        nextDecade: 'Next Decade',
+        prevCentury: 'Previous Century',
+        nextCentury: 'Next Century'
+      }
+      ```
+    - __Description:__ This will change the `tooltips` over each icon to a custom string
 ## License
 MIT [(http://www.opensource.org/licenses/mit-license.php)](http://www.opensource.org/licenses/mit-license.php)
