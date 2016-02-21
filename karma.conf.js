@@ -16,24 +16,24 @@ module.exports = function (config) {
     webpack: {
       devtool: 'inline-source-map',
       resolve: {
-          root: [
-              path.resolve('./app/'),
-              path.resolve('./node_modules/')
-          ],
-          modulesDirectories: ['node_modules'],
-          extensions: ['', '.jsx', '.js']
+        root: [
+          path.resolve('./app/'),
+          path.resolve('./node_modules/')
+        ],
+        modulesDirectories: ['node_modules'],
+        extensions: ['', '.jsx', '.js']
       },
       module: {
         loaders: [
           {
-              test: /\.(jsx|js)?$/,
-              exclude: /node_modules/,
-              loader: 'babel'
+            test: /\.(jsx|js)?$/,
+            exclude: /node_modules/,
+            loader: 'babel'
           },
           {
-              test: /\.(jsx|js)?$/,
-              loaders: ['react-hot', 'babel'],
-              include: path.join(__dirname, 'app')
+            test: /\.(jsx|js)?$/,
+            loaders: ['react-hot', 'babel'],
+            include: path.join(__dirname, 'app')
           },
           {test: /\.css$/, loader: 'style!css'},
           {test: /\.less$/, loader: 'style!css!less'},
@@ -42,17 +42,17 @@ module.exports = function (config) {
         ]
       },
       plugins: [
-          new webpack.optimize.UglifyJsPlugin(),
-          new webpack.HotModuleReplacementPlugin()
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.HotModuleReplacementPlugin()
       ]
     },
     webpackServer: {
       noInfo: true
     },
     coverageReporter: {
-      type: 'html', //produces a html document after code is run
+      type: 'html',
       dir: 'coverage/',
-      subdir: 'reports' //path to created html doc
+      subdir: 'reports'
     }
   });
 };
