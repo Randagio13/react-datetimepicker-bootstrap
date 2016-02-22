@@ -10,8 +10,8 @@
 
 Using [npm](https://npmjs.com):
 
-```js
-$ npm install react-datetimepicker-bootstrap
+```
+$ npm install --save react-datetimepicker-bootstrap
 ```
 
 ## Usage
@@ -43,29 +43,125 @@ export default Example;
 ```
 
 ## Props component:
+### `id`:
+- __Type:__ _string_.
+- __isRequired:__ ✔
+- __DefaultValue:__ _undefined_
+- __Description:__ component id.
 
-Props | Type | isRequired | Default | Description
-:--- | :-- | :--------: | :----- | :---------
-__id__ | _string_ | ✔ | undefined | DateTimePicker Id
-__icon__ | _string_ | ✘ | undefined | The position of the icon, accept: 'left' or 'right'
-__iconType__ | _string_ | ✘ | 'calendar' | View the bootstrap [iconSet](http://getbootstrap.com/components/#glyphicons)
-__placeholder__ | _string_ | ✘ | undefined | The simple placeholder input
-__locale__ | _string_ | ✘ | 'en' | Translate the calendar e.g.: 'it', 'en', 'ru', ...
-__format__ | _string_ | ✘ | moment().format() | Set the format date view e.g.: 'D/M/YYYY'
-__minDate__ | _arrayOf_(_string_) or _object_ | ✘ | undefined | Set the minDate start in the calendar, accept: moment() or new Date()
-__maxDate__ | _arrayOf_(_string_) or _object_ | ✘ | undefined | Set the maxDate start in the calendar, accept: moment() or new Date()
-__disabledDates__ | _arrayOf_(_string_) or _object_ | ✘ | undefined | Disable the dates
-__daysOfWeekDisabled__ | _array_ | ✘ | undefined | Disable a single day in the week, e.g.: [0,6]
-__viewMode__ | _string_ | ✘ | 'days' | Set the viewMode of the calendar, accept: 'decades', 'years', 'months'
-__allowInputToggle__ | _bool_ | ✘ | false | It'll show the datetimepicker on the textbox focus. If the icon is empty then it's set true
-__hasFeedback__ | _bool_ | ✘ | false | It show the typical feedback bootstrap style
-__bsStyle__ | _string_ | ✘ | '' | Set the validation color, accept: 'success', 'error', 'warning'
-__getValue__ | _func_ | ✘ | undefined | Return the date selected
-__inline__ | _bool_ | ✘ | false | View the datetimepicker without the modal view
-__sideBySide__ | _bool_ | ✘ | false | View the datetimepicker without the icon date/time
-__calendarWeeks__ | _bool_ | ✘ | false | It shows the week of the year to the left of first day of the week
-__toolbarPlacement__ | _bool_ | ✘ | false | It changes the placement of the icon toolbar
-**disabled** | _bool_ | ✘ | false | It disabled the input field.
+### `icon`:
+- __Type:__ _string_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _undefined_
+- __Description:__ The position of the icon, accept: `left` or `right`.
+
+### `iconType`:
+- __Type:__ _string_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`calendar`_
+- __Description:__ View the bootstrap [iconSet](http://getbootstrap.com/components/#glyphicons).
+
+### `placeholder`:
+- __Type:__ _string_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _undefined_
+- __Description:__ The simple placeholder input.
+
+### `locale`:
+- __Type:__ _string_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`en`_
+- __Description:__ Translate the calendar `e.g.: 'it', 'en', 'ru', ...` .
+
+### `format`:
+- __Type:__ _string_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`moment().format()`_
+- __Description:__ Set the format date view e.g: `D/M/YYYY`.
+
+### `minDate`:
+- __Type:__ _arrayOf_(_string_) or _object_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _undefined_
+- __Description:__ Set the minDate start in the calendar, accept: `moment()` or `new Date()`.
+
+### `maxDate`:
+- __Type:__ _arrayOf_(_string_) or _object_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _undefined_
+- __Description:__ Set the minDate start in the calendar, accept: `moment()` or `new Date()`.
+
+### `disabledDates`:
+- __Type:__ _arrayOf_(_string_) or _object_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _undefined_
+- __Description:__ Disable the dates.
+
+### `daysOfWeekDisabled`:
+- __Type:__ _array_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`undefined`_
+- __Description:__ Disable a single day in the week, e.g: `[0,6]`.
+
+### `viewMode`:
+- __Type:__ _string_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`days`_
+- __Description:__ Set the viewMode of the calendar, accept: `decades`, `years`, `months`.
+
+### `allowInputToggle`:
+- __Type:__ _boolean_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`false`_
+- __Description:__ It'll show the datetimepicker on the textbox focus. If the icon is empty then it's set true.
+
+### `hasFeedback`:
+- __Type:__ _boolean_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`false`_
+- __Description:__ It show the typical feedback bootstrap style.
+
+### `bsStyle`:
+- __Type:__ _string_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`''`_
+- __Description:__ Set the validation color, accept: `success`, `error`, `warning`.
+
+### `getValue`:
+- __Type:__ _function_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`undefined`_
+- __Description:__ Return the date selected.
+
+### `inline`:
+- __Type:__ _boolean_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`false`_
+- __Description:__ View the datetimepicker without the modal view.
+
+### `sideBySide`:
+- __Type:__ _boolean_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`false`_
+- __Description:__ View the datetimepicker without the icon date/time.
+
+### `calendarWeeks`:
+- __Type:__ _boolean_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`false`_
+- __Description:__ It shows the week of the year to the left of first day of the week.
+
+### `toolbarPlacement`:
+- __Type:__ _boolean_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`false`_
+- __Description:__ It changes the placement of the icon toolbar.
+
+### `disabled`:
+- __Type:__ _boolean_.
+- __isRequired:__ ✘
+- __DefaultValue:__ _`false`_
+- __Description:__ It disabled the input field.
 
 ### `tooltips`:
 - __Type:__ _object_.
@@ -89,6 +185,6 @@ __toolbarPlacement__ | _bool_ | ✘ | false | It changes the placement of the ic
     nextCentury: 'Next Century'
 }
 ```
-- __Description:__ This will change the `tooltips` over each icon to a custom string
+- __Description:__ This will change the `tooltips` over each icon to a custom string.
 ## License
 MIT [(http://www.opensource.org/licenses/mit-license.php)](http://www.opensource.org/licenses/mit-license.php)
