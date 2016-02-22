@@ -3,6 +3,6 @@ build/**
 *.config.js
 __tests__
 server.js
-*.m
+*.md
 *.conf.js
-tests.webpack.js
+*.webpack.js

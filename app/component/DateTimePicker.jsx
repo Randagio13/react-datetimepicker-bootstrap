@@ -3,15 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import jQuery from 'jquery';
 
 class DateTimePicker extends Component {
-  static defaultProps = {
-    iconType: 'calendar',
-    viewMode: 'days',
-    allowInputToggle: false,
-    locale: 'en',
-    hasFeedback: false,
-    calendarWeeks: false,
-    toolbarPlacement: 'default'
-  };
   static propTypes = {
     id: PropTypes.string.isRequired,
     iconType: PropTypes.string,
@@ -58,7 +49,48 @@ class DateTimePicker extends Component {
     toolbarPlacement: PropTypes.oneOf([
       'default', 'top', 'bottom'
     ]),
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    tooltips: PropTypes.shape({
+      today: PropTypes.string,
+      clear: PropTypes.string,
+      close: PropTypes.string,
+      selectMonth: PropTypes.string,
+      prevMonth: PropTypes.string,
+      nextMonth: PropTypes.string,
+      selectYear: PropTypes.string,
+      prevYear: PropTypes.string,
+      nextYear: PropTypes.string,
+      selectDecade: PropTypes.string,
+      prevDecade: PropTypes.string,
+      nextDecade: PropTypes.string,
+      prevCentury: PropTypes.string,
+      nextCentury: PropTypes.string
+    })
+  };
+  static defaultProps = {
+    iconType: 'calendar',
+    viewMode: 'days',
+    allowInputToggle: false,
+    locale: 'en',
+    hasFeedback: false,
+    calendarWeeks: false,
+    toolbarPlacement: 'default',
+    tooltips: {
+      today: 'Go to today',
+      clear: 'Clear selection',
+      close: 'Close the picker',
+      selectMonth: 'Select Month',
+      prevMonth: 'Previous Month',
+      nextMonth: 'Next Month',
+      selectYear: 'Select Year',
+      prevYear: 'Previous Year',
+      nextYear: 'Next Year',
+      selectDecade: 'Select Decade',
+      prevDecade: 'Previous Decade',
+      nextDecade: 'Next Decade',
+      prevCentury: 'Previous Century',
+      nextCentury: 'Next Century'
+    }
   };
   state = this.props;
   componentDidMount() {
@@ -77,7 +109,8 @@ class DateTimePicker extends Component {
       inline,
       sideBySide,
       calendarWeeks,
-      toolbarPlacement
+      toolbarPlacement,
+      tooltips
     } = this.state;
     const options = {
       locale,
@@ -85,16 +118,20 @@ class DateTimePicker extends Component {
       disabledDates,
       daysOfWeekDisabled,
       viewMode,
-      allowInputToggle: icon === undefined && allowInputToggle === false ? true : allowInputToggle,
+      allowInputToggle: icon === undefined &&
+      allowInputToggle === false ? true : allowInputToggle,
       minDate,
       maxDate,
       inline,
       sideBySide,
       calendarWeeks,
-      toolbarPlacement
+      toolbarPlacement,
+      tooltips
     };
     if (getValue) {
-      jQuery(`#${id}`).datetimepicker(options).on('dp.change', this.handleGetValue);
+      jQuery(`#${id}`).datetimepicker(options).on(
+        'dp.change', this.handleGetValue
+      );
     } else {
       jQuery(`#${id}`).datetimepicker(options);
     }
@@ -135,13 +172,22 @@ class DateTimePicker extends Component {
     const { bsStyle, hasFeedback } = this.state;
     switch (bsStyle) {
       case 'success':
-        return hasFeedback ? <span className="glyphicon form-control-feedback glyphicon-ok"/> : null;
+        return hasFeedback ?
+          <span className="glyphicon form-control-feedback glyphicon-ok"/> :
+          null;
       case 'warning':
-        return hasFeedback ? <span className="glyphicon form-control-feedback glyphicon-warning-sign"/> : null;
+        return hasFeedback ? (
+          <span
+            className="glyphicon form-control-feedback glyphicon-warning-sign"
+          />
+        ) : null;
       case 'error':
-        return hasFeedback ? <span className="glyphicon form-control-feedback glyphicon-remove"/> : null;
+        return hasFeedback ?
+          <span className="glyphicon form-control-feedback glyphicon-remove"/> :
+          null;
       default:
-        return hasFeedback ? <span className="glyphicon form-control-feedback"/> : null;
+        return hasFeedback ?
+          <span className="glyphicon form-control-feedback"/> : null;
     }
   };
   render() {
@@ -156,8 +202,10 @@ class DateTimePicker extends Component {
       hasFeedback,
       icon
     } = this.state;
-    const labelText = (label) ? <label className="control-label" htmlFor={id}>{label}</label> : null;
-    const divFeedback = (hasFeedback) ? 'form-group has-feedback' : 'form-group';
+    const labelText = (label) ?
+      <label className="control-label" htmlFor={id}>{label}</label> : null;
+    const divFeedback = (hasFeedback) ?
+      'form-group has-feedback' : 'form-group';
     const classInput = icon === undefined ? 'col-xs-12' : 'input-group';
     const divBsStyle = this.setBsStyleGroup();
     return (
@@ -165,7 +213,15 @@ class DateTimePicker extends Component {
         {labelText}
         <div className={classInput} id={id}>
           {this.iconSet('left')}
-          <input ref={this.setRef} className="form-control" type="text" name={name} required={required} disabled={disabled} placeholder={placeholder} />
+          <input
+            ref={this.setRef}
+            className="form-control"
+            type="text"
+            name={name}
+            required={required}
+            disabled={disabled}
+            placeholder={placeholder}
+          />
           {this.iconSet('right')}
         </div>
         {this.handleBsStyle()}
@@ -177,4 +233,4 @@ class DateTimePicker extends Component {
   }
 }
 
-module.exports = DateTimePicker;
+export default DateTimePicker;
