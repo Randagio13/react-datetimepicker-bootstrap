@@ -186,5 +186,6 @@ export default Example;
 }
 ```
 - __Description:__ This will change the `tooltips` over each icon to a custom string.
+
 ## License
 MIT [(http://www.opensource.org/licenses/mit-license.php)](http://www.opensource.org/licenses/mit-license.php)
