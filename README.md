@@ -46,13 +46,13 @@ export default Example;
 ### `id`:
 - __Type:__ _string_.
 - __isRequired:__ ✔
-- __DefaultValue:__ _undefined_
+- __DefaultValue:__ _`undefined`_
 - __Description:__ component id.
 
 ### `icon`:
 - __Type:__ _string_.
 - __isRequired:__ ✘
-- __DefaultValue:__ _undefined_
+- __DefaultValue:__ _`undefined`_
 - __Description:__ The position of the icon, accept: `left` or `right`.
 
 ### `iconType`:
@@ -64,7 +64,7 @@ export default Example;
 ### `placeholder`:
 - __Type:__ _string_.
 - __isRequired:__ ✘
-- __DefaultValue:__ _undefined_
+- __DefaultValue:__ _`undefined`_
 - __Description:__ The simple placeholder input.
 
 ### `locale`:
@@ -82,19 +82,19 @@ export default Example;
 ### `minDate`:
 - __Type:__ _arrayOf_(_string_) or _object_.
 - __isRequired:__ ✘
-- __DefaultValue:__ _undefined_
+- __DefaultValue:__ _`undefined`_
 - __Description:__ Set the minDate start in the calendar, accept: `moment()` or `new Date()`.
 
 ### `maxDate`:
 - __Type:__ _arrayOf_(_string_) or _object_.
 - __isRequired:__ ✘
-- __DefaultValue:__ _undefined_
+- __DefaultValue:__ _`undefined`_
 - __Description:__ Set the minDate start in the calendar, accept: `moment()` or `new Date()`.
 
 ### `disabledDates`:
 - __Type:__ _arrayOf_(_string_) or _object_.
 - __isRequired:__ ✘
-- __DefaultValue:__ _undefined_
+- __DefaultValue:__ _`undefined`_
 - __Description:__ Disable the dates.
 
 ### `daysOfWeekDisabled`:
