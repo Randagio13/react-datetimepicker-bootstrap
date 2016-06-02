@@ -1,4 +1,5 @@
-import jQuery from 'jquery'
+import $ from 'jquery'
+window.$ = $
 import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'
 import React, { Component, PropTypes } from 'react'
 
@@ -129,11 +130,11 @@ class DateTimePicker extends Component {
       tooltips
     }
     if (getValue) {
-      jQuery(`#${id}`).datetimepicker(options).on(
+      $(`#${id}`).datetimepicker(options).on(
         'dp.change', this.handleGetValue
       )
     } else {
-      jQuery(`#${id}`).datetimepicker(options)
+      $(`#${id}`).datetimepicker(options)
     }
   }
   setRef = (ref) => {
