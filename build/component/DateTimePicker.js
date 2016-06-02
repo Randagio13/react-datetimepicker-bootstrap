@@ -139,7 +139,6 @@ var DateTimePicker = function (_Component) {
       if (getValue) {
         (0, _jquery2.default)('#' + id).datetimepicker(options).on('dp.change', this.handleGetValue);
       } else {
-        debugger;
         (0, _jquery2.default)('#' + id).datetimepicker(options);
       }
     }
