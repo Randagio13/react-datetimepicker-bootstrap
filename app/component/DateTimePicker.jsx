@@ -134,7 +134,6 @@ class DateTimePicker extends Component {
         'dp.change', this.handleGetValue
       )
     } else {
-      debugger;
       $(`#${id}`).datetimepicker(options)
     }
   }
