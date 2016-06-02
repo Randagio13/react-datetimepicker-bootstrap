@@ -1,6 +1,6 @@
 {
   "name": "react-datetimepicker-bootstrap",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "DateTimePicker with React and Bootstrap",
   "main": "./build/App.js",
   "files": [
