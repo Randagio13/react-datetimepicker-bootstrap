@@ -1,6 +1,7 @@
+/* eslint-disable */
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import DateTimePicker from '../app/component/DateTimePicker.jsx';
+import DateTimePicker from '../app/component/DateTimePicker';
 import expect from 'expect';
 
 describe('DateTimePicker', () => {

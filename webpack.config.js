@@ -31,7 +31,7 @@ module.exports = {
       {
         test: /\.(jsx|js)?$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel']
+        loaders: ['babel', 'react-hot']
       },
       {test: /\.css$/, loader: 'style!css'},
       {test: /\.less$/, loader: 'style!css!less'},
@@ -49,10 +49,6 @@ module.exports = {
           BETA: JSON.stringify(JSON.parse(!!process.env.BETA))
         }
       }
-    }),
-    new webpack.ProvidePlugin({
-      React: 'react',
-      ReactDOM: 'react-dom'
     })
   ],
   devServer: {
