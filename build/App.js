@@ -12,7 +12,7 @@ require('bootstrap/dist/css/bootstrap.min.css');
 
 require('eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css');
 
-var _DateTimePicker = require('./component/DateTimePicker.jsx');
+var _DateTimePicker = require('./component/DateTimePicker');
 
 var _DateTimePicker2 = _interopRequireDefault(_DateTimePicker);
 
