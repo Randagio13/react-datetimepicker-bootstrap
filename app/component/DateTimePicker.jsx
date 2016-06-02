@@ -1,6 +1,6 @@
+import jQuery from 'jquery'
 import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'
 import React, { Component, PropTypes } from 'react'
-import jQuery from 'jquery'
 
 class DateTimePicker extends Component {
   static propTypes = {
