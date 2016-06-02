@@ -1,6 +1,6 @@
-import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js';
-import React, { Component, PropTypes } from 'react';
-import jQuery from 'jquery';
+import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'
+import React, { Component, PropTypes } from 'react'
+import jQuery from 'jquery'
 
 class DateTimePicker extends Component {
   static propTypes = {
@@ -66,7 +66,7 @@ class DateTimePicker extends Component {
       prevCentury: PropTypes.string,
       nextCentury: PropTypes.string
     })
-  };
+  }
   static defaultProps = {
     iconType: 'calendar',
     viewMode: 'days',
@@ -91,8 +91,8 @@ class DateTimePicker extends Component {
       prevCentury: 'Previous Century',
       nextCentury: 'Next Century'
     }
-  };
-  state = this.props;
+  }
+  state = this.props
   componentDidMount() {
     const {
       id,
@@ -111,7 +111,7 @@ class DateTimePicker extends Component {
       calendarWeeks,
       toolbarPlacement,
       tooltips
-    } = this.state;
+    } = this.state
     const options = {
       locale,
       format,
@@ -127,69 +127,69 @@ class DateTimePicker extends Component {
       calendarWeeks,
       toolbarPlacement,
       tooltips
-    };
+    }
     if (getValue) {
       jQuery(`#${id}`).datetimepicker(options).on(
         'dp.change', this.handleGetValue
-      );
+      )
     } else {
-      jQuery(`#${id}`).datetimepicker(options);
+      jQuery(`#${id}`).datetimepicker(options)
     }
   }
   setRef = (ref) => {
-    this.componentRef = ref;
-  };
+    this.componentRef = ref
+  }
   handleGetValue = () => {
-    return this.props.getValue(this.componentRef.value);
-  };
+    return this.props.getValue(this.componentRef.value)
+  }
   iconSet = (position) => {
-    const { iconType, icon } = this.props;
+    const { iconType, icon } = this.props
     switch (true) {
       case position === icon:
         return (
           <span className="input-group-addon">
             <span className={'glyphicon glyphicon-' + iconType}></span>
           </span>
-        );
+        )
       default:
-        return null;
+        return null
     }
-  };
+  }
   setBsStyleGroup = () => {
-    const { bsStyle } = this.state;
+    const { bsStyle } = this.state
     switch (bsStyle) {
       case 'success':
-        return 'has-success';
+        return 'has-success'
       case 'warning':
-        return 'has-warning';
+        return 'has-warning'
       case 'error':
-        return 'has-error';
+        return 'has-error'
       default:
-        return '';
+        return ''
     }
-  };
+  }
   handleBsStyle = () => {
-    const { bsStyle, hasFeedback } = this.state;
+    const { bsStyle, hasFeedback } = this.state
     switch (bsStyle) {
       case 'success':
         return hasFeedback ?
           <span className="glyphicon form-control-feedback glyphicon-ok"/> :
-          null;
+          null
       case 'warning':
         return hasFeedback ? (
           <span
             className="glyphicon form-control-feedback glyphicon-warning-sign"
           />
-        ) : null;
+        ) : null
       case 'error':
         return hasFeedback ?
           <span className="glyphicon form-control-feedback glyphicon-remove"/> :
-          null;
+          null
       default:
         return hasFeedback ?
-          <span className="glyphicon form-control-feedback"/> : null;
+          <span className="glyphicon form-control-feedback"/> : null
     }
-  };
+  }
   render() {
     const {
       label,
@@ -201,13 +201,13 @@ class DateTimePicker extends Component {
       required,
       hasFeedback,
       icon
-    } = this.state;
+    } = this.state
     const labelText = (label) ?
-      <label className="control-label" htmlFor={id}>{label}</label> : null;
+      <label className="control-label" htmlFor={id}>{label}</label> : null
     const divFeedback = (hasFeedback) ?
-      'form-group has-feedback' : 'form-group';
-    const classInput = icon === undefined ? 'col-xs-12' : 'input-group';
-    const divBsStyle = this.setBsStyleGroup();
+      'form-group has-feedback' : 'form-group'
+    const classInput = icon === undefined ? 'col-xs-12' : 'input-group'
+    const divBsStyle = this.setBsStyleGroup()
     return (
       <div key={id} className={divFeedback + ' ' + divBsStyle}>
         {labelText}
@@ -229,8 +229,8 @@ class DateTimePicker extends Component {
           {help}
         </span>
       </div>
-    );
+    )
   }
 }
 
-export default DateTimePicker;
+export default DateTimePicker
