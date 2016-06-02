@@ -1,6 +1,5 @@
 {
     "presets": ["react", "es2015", "stage-0"],
-    "sourceMaps": "both",
     "plugins": [
         "transform-node-env-inline"
     ],
