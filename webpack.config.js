@@ -31,19 +31,7 @@ module.exports = {
       {
         test: /\.(jsx|js)?$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-0'],
-          plugins: [
-            'transform-node-env-inline'
-          ],
-          cacheDirectory: true
-        }
-      },
-      {
-        test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel'],
-        include: path.join(__dirname, 'app')
+        loaders: ['react-hot', 'babel']
       },
       {test: /\.css$/, loader: 'style!css'},
       {test: /\.less$/, loader: 'style!css!less'},
