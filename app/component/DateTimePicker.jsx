@@ -1,7 +1,7 @@
 import $ from 'jquery'
-window.$ = $
 import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'
 import React, { Component, PropTypes } from 'react'
+window.$ = $
 
 class DateTimePicker extends Component {
   static propTypes = {
@@ -134,6 +134,7 @@ class DateTimePicker extends Component {
         'dp.change', this.handleGetValue
       )
     } else {
+      debugger;
       $(`#${id}`).datetimepicker(options)
     }
   }
