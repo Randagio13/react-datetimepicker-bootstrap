@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  devtool: process.env.NODE_ENV !== 'production' ? 'eval' : null,
+  devtool: process.env.NODE_ENV !== 'production' ? 'eval' : 'cheap-module-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
